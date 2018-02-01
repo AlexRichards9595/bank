@@ -34,8 +34,8 @@ public class Bank {
 
 	public boolean withdraw(String accountNumber, double amountToWithdraw) {
 		if (amountToWithdraw <= getAccountBalance(accountNumber)) {
-		double newBalance = getAccountBalance(accountNumber)-amountToWithdraw;
-		accounts.put(accountNumber, new BankAccount(accountNumber,getAccountType(accountNumber),newBalance));
+		BankAccount accountToWithdraw = getAccount(accountNumber);
+		accountToWithdraw.withdraw(amountToWithdraw);
 		return true;
 		}
 		return false;
@@ -43,8 +43,8 @@ public class Bank {
 
 	public boolean deposit(String accountNumber, int amountToDeposit) {
 		if (amountToDeposit > 0) {
-			double newBalance = getAccountBalance(accountNumber)+amountToDeposit;
-			accounts.put(accountNumber, new BankAccount(accountNumber,getAccountType(accountNumber),newBalance));
+			BankAccount accountToDeposit = getAccount(accountNumber);
+			accountToDeposit.deposit(amountToDeposit);
 			return true;
 			}
 			return false;

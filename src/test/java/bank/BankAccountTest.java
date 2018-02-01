@@ -21,7 +21,7 @@ public class BankAccountTest {
 	
 	@Test
 	public void shouldReturnAnAccountNumberAsOnes() {
-		BankAccount underTest = new BankAccount("","",0);
+		BankAccount underTest = new BankAccount("1111","",0);
 		String check = underTest.getAccountNumber();
 		
 		assertEquals("1111", check);
@@ -44,6 +44,23 @@ public class BankAccountTest {
 		
 		
 		assertEquals(1, check,.001);
+	}
+	@Test
+	public void shouldWithdraw() {
+		BankAccount underTest = new BankAccount("1111","Checking", 250);
+		
+		underTest.withdraw(50);
+		
+		assertEquals(200, underTest.getBalance(),.001);
+	}
+	@Test
+	public void shouldDeposit() {
+		BankAccount underTest = new BankAccount("1111","Checking", 250);
+		
+		underTest.deposit(50);
+		
+		assertEquals(300, underTest.getBalance(),.001);
+		
 	}
 
 }

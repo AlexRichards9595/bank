@@ -29,4 +29,12 @@ public class BankAccount {
 		return (accountNumber + accountType + balance);
 	}
 
+	public void withdraw(double amount ) {
+		balance = getBalance()-amount;
+	}
+
+	public void deposit(int amount) {
+		balance = getBalance()+amount;
+	}
+
 }

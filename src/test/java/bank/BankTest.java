@@ -13,19 +13,17 @@ public class BankTest {
 	
 	@Before
 	public void setup() {
-		Bank underTest = new Bank();
+		underTest = new Bank();
 	}
 
 	@Test
 	public void assertThatAnAccountHasBeenAdded() {
-		Bank underTest = new Bank();
 		underTest.addAccount(new BankAccount("","",0));
 		int check = underTest.listSize();
 		assertEquals(1, check);
 	}
 	@Test
 	public void assertThatTwoOrdersHaveBeenAdded() {
-		Bank underTest = new Bank();
 		underTest.addAccount(new BankAccount("1","", 0));
 		underTest.addAccount(new BankAccount("","", 0));
 
@@ -35,7 +33,6 @@ public class BankTest {
 	}
 	@Test 
 	public void assertThatAccountNumberPullsAccountInfo() {
-		Bank underTest = new Bank();
 		BankAccount expected = new BankAccount("1111", "Checking", 500.00);
 		underTest.addAccount(expected);
 		BankAccount check = underTest.getAccount("1111");
@@ -44,7 +41,6 @@ public class BankTest {
 	}
 	@Test
 	public void assertsThatAccountNumberPullsNumberFromCorrectAccount() {
-		Bank underTest= new Bank();
 		underTest.addAccount(new BankAccount("1111","Checking", 250));
 		underTest.addAccount(new BankAccount("2222","Savings", 5000));
 		String check = underTest.getAccountNumber("1111");
@@ -54,7 +50,6 @@ public class BankTest {
 	}
 	@Test
 	public void assertsThatAccountNumberPullsTypeFromCorrectAccount() {
-		Bank underTest= new Bank();
 		underTest.addAccount(new BankAccount("1111","Checking", 250));
 		underTest.addAccount(new BankAccount("2222","Savings", 5000));
 		String check = underTest.getAccountType("1111");
@@ -63,7 +58,6 @@ public class BankTest {
 	}
 	@Test
 	public void assertsThatAccountNumberPullsBalanceFromCorrectAccount() {
-		Bank underTest = new Bank();
 		underTest.addAccount(new BankAccount("1111","Checking", 250));
 		underTest.addAccount(new BankAccount("2222","Savings", 5000));
 		double check = underTest.getAccountBalance("1111");
@@ -71,8 +65,7 @@ public class BankTest {
 		assertEquals(250, check,.01);
 	}
 	@Test
-	public void assertsThatMoneyHasBeenWithdrawn() {
-		Bank underTest = new Bank();
+	public void shouldWithdraw() {
 		underTest.addAccount(new BankAccount("1111","Checking", 250));
 		underTest.withdraw("1111", 50);
 		double check = underTest.getAccountBalance("1111");
@@ -80,15 +73,13 @@ public class BankTest {
 	}
 	@Test
 	public void assertsThatWithdrawalWasSuccessful() {
-		Bank underTest = new Bank();
 		underTest.addAccount(new BankAccount("1111", "Checking", 250));
 		boolean check = underTest.withdraw("1111", 50);
 		
 		Assert.assertTrue(check);
 	}
 	@Test
-	public void assertsThatMoneyHasBeenDeposited() {
-		Bank underTest = new Bank();
+	public void shouldDeposit() {
 		underTest.addAccount(new BankAccount("1111","Checking", 250));
 		underTest.deposit("1111", 50);
 		double check = underTest.getAccountBalance("1111");
@@ -96,15 +87,13 @@ public class BankTest {
 	}
 	@Test
 	public void assertsThatDepositWasSuccessful() {
-		Bank underTest = new Bank();
 		underTest.addAccount(new BankAccount("1111", "Checking", 250));
 		boolean check = underTest.deposit("1111", 50);
 		
 		Assert.assertTrue(check);
 	}
 	@Test
-	public void assertsThatAccountWasRemoved() { 
-		Bank underTest = new Bank();
+	public void shouldRemoveAccount() { 
 		underTest.addAccount(new BankAccount("1111", "Checking", 250));
 		underTest.addAccount(new BankAccount("2222", "Savings", 1000));
 		underTest.removeAccount("1111");
